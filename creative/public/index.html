@@ -3,7 +3,7 @@
 <link href="stylesheets/style.css" rel = "stylesheet" type = "text/css"/>
 </head>
 <head>
-<title>City Finder</title>
+<title>Super Dictionary Extraodanaire</title>
 <script
   src="http://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -47,9 +47,10 @@ $(document).ready(function() {
         var type2 = parsed_json[0]['word'];
         var definition2 = parsed_json[1]['word'];
         var example2 = parsed_json[2]['word'];
-        results2 += "<strong></strong> " + type2 + "<br>";
-        results2 += "<strong></strong> " + definition2 + "<br>";
-        results2 +=  example2 + "<br>";
+        results2 += "<ul>;
+        results2 +=  "<li>" + type2 + "</li>";
+        results2 +=  "<li>" + definition2 + "</li>";
+        results2 +=  +<li>" + example2 + "</li>";
 
         $("#datamuse").html(results2);
 	}
@@ -67,10 +68,10 @@ Enter A Query: <input type="text" id="searchStack" value=""><br>
 <input id="searchButton" type="submit" value="Submit">
 </form>
 
-<p>Owl Definition</p>
+<h2>Owl Definition</h2>
 <div id="searchResults">No results</div>
 
-<p>Datamuse Synonyms</p>
+<h2>Datamuse Synonyms</h2>
 <div id ="datamuse">No results</div>
 </body>
 </html>
