@@ -51,10 +51,30 @@ $(document).ready(function() {
         results2 +=  "<li>" + type2 + "</li>";
         results2 +=  "<li>" + definition2 + "</li>";
         results2 +=  "<li>" + example2 + "</li>";
-
+	results2 += "</ul>";
         $("#datamuse").html(results2);
 	}
     });
+
+    var myurl3= "/ant?q="+$("#searchStack").val();
+    console.log(myurl3);
+    var results3 = "";
+    $.ajax({
+      url : myurl3,
+      dataType : "json",
+      success : function(parsed_json) {
+      console.log(parsed_json);
+        var type3 = parsed_json[0]['word'];
+        var definition3 = parsed_json[1]['word'];
+        results3 += "<ul>";
+        results3 +=  "<li>" + type3 + "</li>";
+        results3 +=  "<li>" + definition3 + "</li>";
+	results3 += "</ul>";
+        $("#ant").html(results3);
+        }
+    });
+
+
   });
 });
 </script>
@@ -74,5 +94,9 @@ Enter A Query: <input type="text" id="searchStack" value=""><br>
 
 <h2>Datamuse Synonyms</h2>
 <div id ="datamuse">No results</div>
+
+<h2>Antonyms</h2>
+<div id ="ant">No antonyms found</div>
+
 </body>
 </html>
