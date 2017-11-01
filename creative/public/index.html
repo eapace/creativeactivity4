@@ -1,5 +1,56 @@
 <html>
+<head>
+<link href="stylesheets/style.css" rel = "stylesheet" type = "text/css"/>
+</head>
+<head>
+<title>City Finder</title>
+<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+
+<script>
+$(document).ready(function() {
+    $("#searchButton").click(function(e){
+    e.preventDefault();
+    var value = $("#searchStack").val();
+    console.log(value);
+    var myurl= "/owlapi?q="+$("#searchStack").val();
+    console.log(myurl);
+    results = "";
+    $.ajax({
+      url : myurl,
+      dataType : "json",
+      success : function(parsed_json) {
+      console.log(parsed_json); 
+        var type = parsed_json[0]['type'];
+        var definition = parsed_json[0]['defenition'];
+        var example = parsed_json[0]['example'];
+        results += "<strong>Type:</strong> " + type + "<br>";
+        results += "<strong>Definition:</strong> " + definition + "<br>";
+        results += "<strong>Example:</strong> " + example + "<br>";
+  
+        $("#searchResults").html(results);
+      }
+    });
+  });
+});
+</script>
+
+</head>
+<body>
+<form>
+
+<form>
+Enter A Query: <input type="text" id="searchStack" value=""><br>
+<input id="searchButton" type="submit" value="Submit">
+</form>
+
+<p>Owl API Results</p>
+<div id="searchResults">No results</div>
 
 
 
+</body>
 </html>
