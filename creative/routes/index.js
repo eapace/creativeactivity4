@@ -5,7 +5,7 @@ var https = require('https')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile('weather.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'public' });
 });
 
 router.get('/owlapi', function(req, res1, next) {
