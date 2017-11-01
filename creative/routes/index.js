@@ -30,5 +30,30 @@ router.get('/owlapi', function(req, res1, next) {
  // console.log(JSON.parse(result));
 });
 
+
+router.get('/datamuse', function(req, res1, next) {
+  const https = require('https');
+  var result = '';
+
+  https.get("https://api.datamuse.com/words?ml=" + req.query.q, (res) =>{
+   // console.log('statusCode:', res.statusCode);
+   // console.log('headers:', res.headers);
+
+    var jsonresult = [];
+    res.on('data', (d) => {
+      process.stdout.write(d);
+      result += d;
+    })
+
+  .on('end', (e) => {
+    console.log(e);
+   res1.status(200).json(JSON.parse(result));
+   });
+  });
+ // console.log(JSON.parse(result));
+});
+
+
+
 module.exports = router;
 
